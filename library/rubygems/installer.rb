@@ -10,6 +10,7 @@ require 'rubygems/package'
 require 'rubygems/ext'
 require 'rubygems/user_interaction'
 require 'fileutils'
+require 'thread'
 
 ##
 # The installer installs the files contained in the .gem into the Gem.home.
@@ -25,6 +26,7 @@ require 'fileutils'
 # file.  See Gem.pre_install and Gem.post_install for details.
 
 class Gem::Installer
+  INSTALL_MUTEX = Mutex.new
 
   ##
   # Paths where env(1) might live.  Some systems are broken and have it in
@@ -240,7 +242,9 @@ class Gem::Installer
 
     say spec.post_install_message unless spec.post_install_message.nil?
 
-    Gem::Specification.add_spec spec unless Gem::Specification.include? spec
+    INSTALL_MUTEX.synchronize do
+      Gem::Specification.add_spec spec unless Gem::Specification.include? spec
+    end
 
     run_post_install_hooks
 
