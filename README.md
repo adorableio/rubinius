@@ -1,5 +1,6 @@
 # Rubinius: The Ruby Environment
 
+![build-status](https://travis-ci.org/rubinius/rubinius.svg)
 
 - [What is Rubinius](#user-content-what-is-rubinius)
 - [License](#user-content-license)
