@@ -10,7 +10,7 @@
 - [Contributing](#user-content-contributing)
 - [Features Currently Not Supported](#user-content-features-currently-not-supported)
 
-## What is Rubinius
+## What is Rubinius?
 
 Rubinius is an implementation of the Ruby programming language. Rubinius aims to be compatible with Ruby version 2.1.
 
